@@ -1,0 +1,105 @@
+.clock {
+  width: 300px;
+  height: 300px;
+  background-color: rgba($color: #fff, $alpha: 0.8);
+  border-radius: 50%;
+  border: 2px solid #000;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    z-index: 20;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #000;
+  }
+
+  &__number {
+    $rotation: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: rotate(var(--rotation));
+    font-size: 1.5rem;
+
+    &--1 {
+      --rotation: 30deg;
+    }
+
+    &--2 {
+      --rotation: 60deg;
+    }
+
+    &--3 {
+      --rotation: 90deg;
+    }
+
+    &--4 {
+      --rotation: 120deg;
+    }
+
+    &--5 {
+      --rotation: 150deg;
+    }
+
+    &--6 {
+      --rotation: 180deg;
+    }
+
+    &--7 {
+      --rotation: 210deg;
+    }
+
+    &--8 {
+      --rotation: 240deg;
+    }
+
+    &--9 {
+      --rotation: 270deg;
+    }
+
+    &--10 {
+      --rotation: 300deg;
+    }
+    
+    &--11 {
+      --rotation: 330deg;
+    }
+  }
+
+  &__hand {
+    --rotation: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    transform: translateX(-50%) rotate(var(--rotation));
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 10;
+
+    &--s {
+      width: 3px;
+      height: 45%;
+      background-color: #f00;
+    }
+
+    &--m {
+      width: 7px;
+      height: 40%;
+      background-color: #000;
+    }
+
+    &--h {
+      width: 10px;
+      height: 35%;
+      background-color: #000;
+    }
+  }
+}
