@@ -1,21 +1,23 @@
-import './clock.scss'
+import styles from './clock.scss' //{ clock: "_223paBrnGWtVFet2T3VU-6",... }
 
 const clock = () => {
   const container = document.createElement('section')
-  container.classList.add('clock')
 
-  for (let i = 0; i < 3; i++) {
-    const element = document.createElement('div')
-    element.classList.add('clock__hand')
-    i === 0 && element.classList.add('clock__hand--s')
-    i === 1 && element.classList.add('clock__hand--m')
-    i === 2 && element.classList.add('clock__hand--h')
-    container.appendChild(element)
-  }
+  const secondsHand = document.createElement('div')
+  const minutesHand = document.createElement('div')
+  const hoursHand = document.createElement('div')
+  
+  container.classList.add(styles['clock'])
+
+  secondsHand.classList.add(styles['clock__hand'], styles['clock__hand--s'])
+  minutesHand.classList.add(styles['clock__hand'], styles['clock__hand--m'])
+  hoursHand.classList.add(styles['clock__hand'], styles['clock__hand--h'])
+
+  container.append(secondsHand, minutesHand, hoursHand)  
 
   for (let i = 1; i < 13; i++) {
     const element = document.createElement('div')
-    element.classList.add('clock__number', `clock__number--${i}`)
+    element.classList.add(styles['clock__number'], styles[`clock__number--${i}`])
     element.textContent = i
     container.appendChild(element)
   }
@@ -26,9 +28,9 @@ const clock = () => {
     const minutes = (seconds + currentDate.getMinutes()) / 60
     const hours = (minutes + currentDate.getHours()) / 12
 
-    setRotation(container.firstChild, seconds)
-    setRotation(container.children[1], minutes)
-    setRotation(container.children[2], hours)
+    setRotation(secondsHand, seconds)
+    setRotation(minutesHand, minutes)
+    setRotation(hoursHand, hours)
   }
 
   const setRotation = (element, rotation) => {
